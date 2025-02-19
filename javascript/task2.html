@@ -1,0 +1,38 @@
+<script>
+    let count = 0;
+    let interval;
+    function updateCounter() {
+        document.getElementById("counter").innerHTML = count;
+    }
+    function startCounter() {
+        if (!interval) {
+            interval = setInterval(() => {
+                count++;
+                updateCounter();
+                if (count >= 10) {
+                    stopCounter();
+                }
+            }, 1000);
+        }
+    }
+    function pauseCounter() {
+        clearInterval(interval);
+        interval = null;
+    }
+    function stopCounter() {
+        clearInterval(interval);
+        count = 0;
+        updateCounter();
+        interval = null;
+    }
+</script>
+
+<body>
+    <h2>Countdown Timer</h2>
+    <p id="counter">0</p>
+    <input type="button" onclick="startCounter()" value="Start" />
+    <input type="button" onclick="pauseCounter()" value="Pause" />
+    <input type="button" onclick="stopCounter()" value="Stop" />
+</body>
+
+</html>

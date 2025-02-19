@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        button#edit
+        {
+          position: absolute;
+          left: 200px;
+        }        
+        button#delete
+        {
+          position: absolute;
+          left: 250px;
+        }
+    </style>
+    <script>
+        var task = "";
+        function addTask()
+        {
+            localStorage.setItem( document.getElementById("task").value, document.getElementById("task").value);
+            document.getElementById("task").value = "";
+            loadTasks()
+
+        }
+        function loadTasks()
+        {
+            var taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+            for(var i = 0; i < localStorage.length; i++)
+            {
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                taskList.innerHTML += "<li>" + value + "<button id='edit' onclick='editTask(\"" + key + "\")'>Edit</button>" + " <button id='delete' onclick='deleteTask(\"" + key + "\")'>Delete</button>" + "</li> <hr>";
+            }
+        }
+        function deleteTask(key)
+        {
+            localStorage.removeItem(key);
+            loadTasks();
+        }
+        function editTask(key)
+        {
+            localStorage.removeItem(key);
+            document.getElementById("task").value = key;
+        }
+    </script>
+</head>
+<body onload="loadTasks()">
+    <h1>Todo List</h1>
+    <hr>
+    <input type="text" id="task" placeholder="Enter a task">
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="addTask()">Edit Task</button>
+    <br>
+    <br>
+    <br>
+    <ul id="taskList" >
+
+    </ul>
+    
+</body>
+</html>

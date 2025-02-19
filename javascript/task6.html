@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h2>Choose a Color</h2>
+    <label for="color-picker">Pick a color:</label>
+    <input type="color" id="color-picker" value="#ff0000">
+    <div id="color-display"></div>
+    <script>
+        
+        const colorPicker = document.getElementById('color-picker');
+        const colorDisplay = document.getElementById('color-display');
+        
+        
+        function updateColor() {
+            const selectedColor = colorPicker.value;
+            colorDisplay.style.backgroundColor = selectedColor;
+        }
+        colorPicker.addEventListener('input', updateColor);
+        updateColor();
+    </script>
+</body>
+</html>

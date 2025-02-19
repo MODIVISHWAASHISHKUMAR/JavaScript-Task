@@ -1,0 +1,37 @@
+
+    <script>
+        var randomNumber;
+        function generateRandomNumber() {
+            randomNumber = Math.floor(Math.random() * 10) + 1;
+        }    
+        function checkGuess()
+        {
+            if(document.getElementById("guess").value == "")
+            {
+                alert("Please enter a number!");
+                return;
+            }
+            var guess = document.getElementById("guess").value;
+            if(guess == randomNumber)
+            {
+                document.getElementById("result").innerHTML = "<h3>Yehhhh , You guessed it right!</h3>";
+                document.getElementById("result").style.color = "green";
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = "<h3>Oops Sorry , You guessed it wrong! The number was " + randomNumber + "</h3>";
+                document.getElementById("result").style.color = "red";
+            }
+        }
+    </script>
+</head>
+<body onload="generateRandomNumber()">
+    <h2>Guess the number from 1 to 10: </h2>
+    <input type="number" id="guess" placeholder="1-10"/>
+    <hr/>
+    <input type="button" onclick="checkGuess()" value="Guess"/>
+    <p id="result">
+
+    </p>
+</body>
+</html>

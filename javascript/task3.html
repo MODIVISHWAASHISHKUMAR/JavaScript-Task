@@ -1,0 +1,21 @@
+<script>
+     let otpp = '';
+    const length = 6;
+     const characters = '0123456789'; 
+    function updateotp(){
+        document.getElementById('otp').textContent = otpp;
+        otpp='';
+    }
+    function generateOTP(){
+         for (let i = 0; i < length; i++) {
+            otpp += characters.charAt(Math.floor(Math.random() * characters.length)); 
+        }
+       updateotp();
+    }
+</script>
+<body>
+    <h2>OTP Generator</h2>
+    <input type="button" onclick="generateOTP()" value="Generate OTP">
+    <p id="otp">0</p>
+</body>
+</html>

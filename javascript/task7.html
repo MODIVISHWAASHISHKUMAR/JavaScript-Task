@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <h2>OTP Timer</h2>
+
+    <div id="timer">00:30</div>
+    <button id="start-button">Start Timer</button>
+    <button id="resend-button" style="display: run-in;">Resend OTP</button>
+
+    <script>
+        let timeLeft = 30;
+        let countdown;
+        const timerElement = document.getElementById('timer');
+        const startButton = document.getElementById('start-button');
+        const resendButton = document.getElementById('resend-button');
+
+        function startTimer() {
+            startButton.disabled = true;
+            timeLeft = 30;
+            updateTimer();
+
+            countdown = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    startButton.disabled = false;
+                    resendButton.style.display = 'inline';
+                }
+            }, 1000);
+        }
+
+        function updateTimer() {
+            timerElement.textContent = timeLeft < 10 ? `00:0${timeLeft}` : `00:${timeLeft}`;
+        }
+
+        startButton.addEventListener('click', startTimer);
+        resendButton.addEventListener('click', startTimer);
+
+    </script>
+</body>
+
+</html>

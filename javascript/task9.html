@@ -1,0 +1,46 @@
+<script>
+        function clearFields()
+        {
+            document.getElementById('num1').value = "";
+            document.getElementById('num2').value = "";
+            document.getElementById('result').innerHTML = "0";
+
+        }
+        function add()
+        {
+            document.getElementById('result').innerHTML = parseInt(document.getElementById('num1').value) + parseInt(document.getElementById('num2').value);
+        }
+        function subtract()
+        {
+            document.getElementById('result').innerHTML = parseInt(document.getElementById('num1').value) - parseInt(document.getElementById('num2').value);
+        }
+        function multiply()
+        {
+            document.getElementById('result').innerHTML = parseInt(document.getElementById('num1').value) * parseInt(document.getElementById('num2').value);
+        }
+        function divide()
+        {
+            document.getElementById('result').innerHTML = parseInt(document.getElementById('num1').value) / parseInt(document.getElementById('num2').value);
+        }
+</script>
+
+<body>
+    <h2>Basic Calculator</h2>
+    <h4>First Number : 
+    <input type="number" id="num1" placeholder="Enter first number" min="0"/>
+    </h4>
+    <h4>Second Number : 
+    <input type="number" id="num2" placeholder="Enter second number" min="0"/>
+    </h4>
+    <hr>
+    <input type="button" onclick="add()" value="Add"/>
+    <input type="button" onclick="subtract()" value="Subtract"/>
+    <input type="button" onclick="multiply()" value="Multiply"/>
+    <input type="button" onclick="divide()" value="Divide"/>
+    <input type="button" onclick="clearFields()" value="Clear"/>
+    <hr>
+    <h3>
+        Result : <span id="result">0</span>
+    </h3>
+</body>
+</html>
